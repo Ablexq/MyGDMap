@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="amap.com.android_path_record">
+
+    <application>
+        <activity
+            android:name=".PathRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RecordActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".RecordShowActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
+    </application>
+</manifest>

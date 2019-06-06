@@ -65,3 +65,41 @@ test2 ： 综合使用搜索和导航实现导航到周边餐馆功能示例
 
 https://github.com/amap-demo/android-navi-quick-start
 
+# 包名
+
+``` 
+//module当做application时applicationId要使用app的包名，
+//打包的AndroidManifest.xml也会自动转换为app的包名
+if (rootProject.ext.isPermissionApplication) {
+    applicationId android.applicationId
+}
+```
+
+# Android8.0适配
+
+报错：
+``` 
+android.app.RemoteServiceException: Bad notification for startForeground: 
+java.lang.RuntimeException: invalid channel for service notification: 
+Notification(channel=null pri=0 contentView=null vibrate=null sound=null 
+defaults=0x0 flags=0x40 color=0x00000000 vis=PRIVATE)
+```
+解决参考：
+
+https://lbs.amap.com/api/android-location-sdk/guide/utilities/permision_8
+
+# 错误：
+
+java.lang.NoSuchFieldError: 
+No static field navi_fragment of type I in class Lcom/amap/navifragement/R$id; 
+or its superclasses (declaration of 'com.amap.navifragement.R$id' appears in base.apk)
+
+或
+
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 
+'void com.amap.api.maps.MapView.onCreate(android.os.Bundle)' on a null object reference
+
+解决：
+
+注意MapView所在的layout名称 不要和其他layout名称相同。
+

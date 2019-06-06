@@ -1,0 +1,90 @@
+ext {
+
+    //模块开关，false:作为Lib组件存在， true:作为application存在
+    isPermissionApplication = false
+    isBglocationApplication = false
+    isServicelocationApplication = false
+    isLocationHighApplication = false
+    isNaviMasterApplication = false
+    isNaviQuickApplication = false
+    isNaviFragApplication = false
+    isPathRecordApplication = false
+    isPathSmoothApplication = false
+    isSmoothMoveApplication = false
+
+    isMovePointApplication = false
+    isMakerMoveApplication = false
+    isRotationApplication = false
+    isInfoWindowApplication = false
+    isDriveRouteApplication = false
+
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 17,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0.0",
+            applicationId    : "com.xq.mygdmap",
+    ]
+
+    version = [
+            androidSupportSdkVersion: "28.0.0",
+            retrofitSdkVersion      : "2.4.0",
+            glideSdkVersion         : "4.8.0",
+            canarySdkVersion        : "1.5.4",
+            constraintVersion       : "1.0.2",
+            okhttp                  : "3.8.1"
+    ]
+
+    dependencies = [
+            //support
+            "appcompat-v7"            : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "design"                  : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "palette"                 : "com.android.support:palette-v7:${version["androidSupportSdkVersion"]}",
+            "support-v4"              : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"             : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "annotations"             : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7"         : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            "constraint-layout"       : "com.android.support.constraint:constraint-layout:${version["constraintVersion"]}",
+            "percent"                 : "com.android.support:percent:${version["androidSupportSdkVersion"]}",
+            "dynamic"                 : "com.android.support:support-dynamic-animation:${version["androidSupportSdkVersion"]}",
+            "multidex"                : "com.android.support:multidex:1.0.2",
+
+            //network
+            "retrofit"                : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
+            "retrofit-converter-gson" : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava2": "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "okhttp"                  : "com.squareup.okhttp3:okhttp:${version["okhttp"]}",
+            "logging-interceptor"     : "com.squareup.okhttp3:logging-interceptor:${version["okhttp"]}",
+            "rxandroid2"              : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            "rxjava2"                 : "io.reactivex.rxjava2:rxjava:2.1.11",
+            "rxrelay"                 : "com.jakewharton.rxrelay2:rxrelay:2.0.0",
+
+            "retrofit-adapter-rxjava" : 'com.squareup.retrofit2:adapter-rxjava:2.1.0',
+            "rxandroid"               : "io.reactivex.rxjava2:rxandroid:1.2.1",
+            "rxjava"                  : "io.reactivex.rxjava2:rxjava:1.2.1",
+
+            //router
+            "router"                  : "com.alibaba:arouter-api:1.4.1",
+            "router-compiler"         : "com.alibaba:arouter-compiler:1.2.2",
+
+            //image
+            "glide"                   : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
+            "glide-compiler"          : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            "glide-transformations"   : "jp.wasabeef:glide-transformations:3.3.0",
+            "picasso"                 : "com.squareup.picasso:picasso:2.5.2",
+            "takephoto"               : "com.jph.takephoto:takephoto_library:4.0.3",
+            "imagepicker"             : "com.lzy.widget:imagepicker:0.5.0",
+
+            //view
+            "tablayout"               : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "flowlayout"              : "com.zhy:flowlayout-lib:1.0.3",
+
+            //tools
+            "eventbus"                : "org.greenrobot:eventbus:3.0.0",
+            "dagger"                  : "com.google.dagger:dagger:2.13",
+            "utilcode"                : "com.blankj:utilcode:1.12.5",
+            "easypermissions"         : "pub.devrel:easypermissions:1.0.1",
+    ]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.amap.navifragement">
+
+    <application>
+        <activity
+            android:name=".NaviFragActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FragRouteNaviActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
