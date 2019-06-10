@@ -17,6 +17,7 @@ import com.amap.navi.demo.NaviMasterActivity;
 import com.amap.navifragement.NaviFragActivity;
 import com.amap.naviquickstart.NaviQuickActivity;
 import com.amap.requestpermissions.MapPermissionActivity;
+import com.example.appbarlayout.AppbarActivity;
 
 import amap.android_multiple_infowindows.InfoWindowMainActivity;
 import amap.com.android_moving_point.MovingPointMainActivity;
@@ -34,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     public void onclick(View view) {
         Intent intent = null;
         switch (view.getId()) {
+            case R.id.btn0:
+                intent = new Intent(MainActivity.this, AppbarActivity.class);
+                break;
+
             case R.id.btn1:
                 intent = new Intent(MainActivity.this, MapPermissionActivity.class);
                 break;

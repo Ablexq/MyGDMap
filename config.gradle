@@ -19,6 +19,7 @@ ext {
     isDriveRouteApplication = false
 
     isCustomZoomApplication = false
+    isAppbarApplication = false
 
     android = [
             compileSdkVersion: 28,

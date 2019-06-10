@@ -11,6 +11,15 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="onclick"
+            android:text=""
+            android:textColor="@color/colorBlue"
+            android:textSize="25sp" />
+        <Button
             android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

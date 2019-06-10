@@ -88,4 +88,7 @@ dependencies {
     if (!rootProject.ext.isCustomZoomApplication) {
         implementation project(':customzoom')
     }
+    if (!rootProject.ext.isAppbarApplication) {
+        implementation project(':appbarlayout')
+    }
 }

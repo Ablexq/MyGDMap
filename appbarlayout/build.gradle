@@ -1,0 +1,51 @@
+if (rootProject.ext.isAppbarApplication) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    def android = rootProject.ext.android
+    compileSdkVersion android["compileSdkVersion"]
+    buildToolsVersion android.buildToolsVersion
+    defaultConfig {
+        if (rootProject.ext.isAppbarApplication) {
+            applicationId android.applicationId
+        }
+        minSdkVersion android.minSdkVersion
+        targetSdkVersion android.targetSdkVersion
+        versionCode android.versionCode
+        versionName android.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (rootProject.ext.isAppbarApplication) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            }
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def dependencies = rootProject.ext.dependencies
+    implementation dependencies["appcompat-v7"]
+    implementation dependencies["design"]
+    implementation dependencies["recyclerview-v7"]
+
+    implementation project(':gdbase')
+
+}
