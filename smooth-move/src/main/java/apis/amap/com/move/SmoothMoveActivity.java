@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
@@ -22,7 +23,7 @@ import com.amap.api.maps.utils.overlay.SmoothMoveMarker;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SmoothMoveActivity extends Activity implements View.OnClickListener{
+public class SmoothMoveActivity extends Activity implements View.OnClickListener {
 
     private MapView mapView;
 
@@ -32,15 +33,14 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
     private SmoothMoveMarker moveMarker;
 
 
-    private static final int START_STATUS=0;
+    private static final int START_STATUS = 0;
 
-    private static final int MOVE_STATUS=1;
+    private static final int MOVE_STATUS = 1;
 
-    private static final int PAUSE_STATUS=2;
-    private static final int FINISH_STATUS=3;
+    private static final int PAUSE_STATUS = 2;
+    private static final int FINISH_STATUS = 3;
 
-    private int mMarkerStatus=START_STATUS;
-
+    private int mMarkerStatus = START_STATUS;
 
 
     @Override
@@ -49,7 +49,7 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_smooth_move);
 
         mapView = (MapView) findViewById(R.id.map);
-        mStartButton= (Button) findViewById(R.id.move_start_button);
+        mStartButton = (Button) findViewById(R.id.move_start_button);
         mStartButton.setOnClickListener(this);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
         init();
@@ -105,21 +105,30 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
         mapView.onDestroy();
     }
 
+    private LatLngBounds getBounds(List<LatLng> latLngs) {
+        LatLngBounds.Builder b = LatLngBounds.builder();
+        if (latLngs == null) {
+            return b.build();
+        }
+        for (int i = 0; i < latLngs.size(); i++) {
+            b.include(latLngs.get(i));
+        }
+        return b.build();
+    }
 
-    private void initMoveMarker(){
+    private void initMoveMarker() {
         addPolylineInPlayGround();
+
         // 获取轨迹坐标点
         List<LatLng> points = readLatLngs();
-        LatLngBounds.Builder b = LatLngBounds.builder();
-        for (int i = 0 ; i < points.size(); i++) {
-            b.include(points.get(i));
-        }
-        LatLngBounds bounds = b.build();
+        //获取经纬度坐标矩形区域
+        LatLngBounds bounds = getBounds(points);
+
         aMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
 
         moveMarker = new SmoothMoveMarker(aMap);
         // 设置滑动的图标
-        moveMarker.setDescriptor(BitmapDescriptorFactory.fromResource(R.drawable.car));
+        moveMarker.setDescriptor(BitmapDescriptorFactory.fromResource(R.drawable.smooth_move_car));
 
         /*
         //当移动Marker的当前位置不在轨迹起点，先从当前位置移动到轨迹上，再开始平滑移动
@@ -140,16 +149,16 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
                     @Override
                     public void move(final double distance) {
 
-                        Log.i("MY","distance:  "+distance);
+                        Log.i("MY", "distance:  " + distance);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 if (infoWindowLayout != null && title != null && moveMarker.getMarker().isInfoWindowShown()) {
                                     title.setText("距离终点还有： " + (int) distance + "米");
                                 }
-                                if(distance == 0){
+                                if (distance == 0) {
                                     moveMarker.getMarker().hideInfoWindow();
-                                    mMarkerStatus=FINISH_STATUS;
+                                    mMarkerStatus = FINISH_STATUS;
                                     mStartButton.setText("开始");
 
 
@@ -207,10 +216,13 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
         List<LatLng> list = readLatLngs();
         List<Integer> colorList = new ArrayList<Integer>();
 
-        aMap.addPolyline(new PolylineOptions().setCustomTexture(BitmapDescriptorFactory.fromResource(R.drawable.custtexture)) //setCustomTextureList(bitmapDescriptors)
+        BitmapDescriptor descriptor = BitmapDescriptorFactory.fromResource(R.drawable.custtexture);
+        PolylineOptions polylineOptions = new PolylineOptions()
+                .setCustomTexture(descriptor) //setCustomTextureList(bitmapDescriptors)
                 .addAll(list)
                 .useGradient(true)
-                .width(18));
+                .width(18);
+        aMap.addPolyline(polylineOptions);
     }
 
     private List<LatLng> readLatLngs() {
@@ -278,29 +290,26 @@ public class SmoothMoveActivity extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if (mMarkerStatus==START_STATUS){
+        if (mMarkerStatus == START_STATUS) {
             moveMarker.startSmoothMove();
-            mMarkerStatus=MOVE_STATUS;
+            mMarkerStatus = MOVE_STATUS;
             mStartButton.setText("暂停");
-        }
-       else if (mMarkerStatus==MOVE_STATUS){
+        } else if (mMarkerStatus == MOVE_STATUS) {
             moveMarker.stopMove();
-            mMarkerStatus=PAUSE_STATUS;
+            mMarkerStatus = PAUSE_STATUS;
             mStartButton.setText("继续");
-        }
-        else if (mMarkerStatus==PAUSE_STATUS){
-           moveMarker.startSmoothMove();
-           mMarkerStatus=MOVE_STATUS;
+        } else if (mMarkerStatus == PAUSE_STATUS) {
+            moveMarker.startSmoothMove();
+            mMarkerStatus = MOVE_STATUS;
             mStartButton.setText("暂停");
-        }
-        else if (mMarkerStatus==FINISH_STATUS){
-            moveMarker.setPosition(new LatLng( 39.97617053371078,116.3499049793749));
+        } else if (mMarkerStatus == FINISH_STATUS) {
+            moveMarker.setPosition(new LatLng(39.97617053371078, 116.3499049793749));
             List<LatLng> points = readLatLngs();
             moveMarker.setPoints(points);
             moveMarker.getMarker().showInfoWindow();
             moveMarker.startSmoothMove();
 
-            mMarkerStatus=MOVE_STATUS;
+            mMarkerStatus = MOVE_STATUS;
             mStartButton.setText("暂停");
 
         }

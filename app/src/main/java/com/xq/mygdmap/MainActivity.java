@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.amap.android_location_markermove.MakerMoveMainActivity;
+import com.amap.android_map_customzoom.CustomZoomMainActivity;
 import com.amap.android_path_smooth.PathSmoothMainActivity;
 import com.amap.androidobackgroundlocation.BgLocationActivity;
 import com.amap.driveroute.DriveRouteMainActivity;
@@ -83,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn15:
                 intent = new Intent(MainActivity.this, InfoWindowMainActivity.class);
+                break;
+            //
+            case R.id.btn16:
+                intent = new Intent(MainActivity.this, CustomZoomMainActivity.class);
                 break;
         }
         startActivity(intent);

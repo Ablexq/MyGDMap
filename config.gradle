@@ -18,6 +18,8 @@ ext {
     isInfoWindowApplication = false
     isDriveRouteApplication = false
 
+    isCustomZoomApplication = false
+
     android = [
             compileSdkVersion: 28,
             buildToolsVersion: "28.0.3",

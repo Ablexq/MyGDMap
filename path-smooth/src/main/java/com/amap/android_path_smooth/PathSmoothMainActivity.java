@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.LatLng;
@@ -18,7 +19,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PathSmoothMainActivity extends AppCompatActivity implements AMap.OnMapLoadedListener, CompoundButton.OnCheckedChangeListener {
+public class PathSmoothMainActivity extends AppCompatActivity
+        implements AMap.OnMapLoadedListener, CompoundButton.OnCheckedChangeListener {
     private MapView mMapView = null;
     private AMap amap = null;
     private List<LatLng> mOriginList = new ArrayList<LatLng>();
@@ -55,7 +57,10 @@ public class PathSmoothMainActivity extends AppCompatActivity implements AMap.On
                 "traceRecord" + File.separator + "AMapTrace2.csv");
         if (mOriginList != null && mOriginList.size()>0) {
             mOriginPolyline = amap.addPolyline(new PolylineOptions().addAll(mOriginList).color(Color.GREEN));
-            amap.moveCamera(CameraUpdateFactory.newLatLngBounds(getBounds(mOriginList), 200));
+
+            LatLngBounds latLngBounds = getBounds(mOriginList);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 200);
+            amap.moveCamera(cameraUpdate);
 //            amap.moveCamera(CameraUpdateFactory.newLatLngZoom(mOriginList.get(0),15));
         }
         pathOptimize(mOriginList);

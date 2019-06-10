@@ -163,5 +163,15 @@
             android:text="用marker展示多infowindow的效果"
             android:textColor="@android:color/black"
             android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/btn16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:onClick="onclick"
+            android:text="自定义地图缩放按钮"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="25sp" />
     </LinearLayout>
 </ScrollView>

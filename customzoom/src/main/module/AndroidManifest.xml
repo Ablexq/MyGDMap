@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.amap.android_map_customzoom">
+
+    <application>
+        <activity
+            android:name=".CustomZoomMainActivity"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

@@ -56,9 +56,9 @@ public class MovingPointMainActivity extends Activity implements AMap.OnMapLoade
         if (amap == null){
             amap = mMapView.getMap();
         }
-        amap.setOnMapLoadedListener(this);
+        amap.setOnMapLoadedListener(this);//设置地图加载完成监听接口
 //        amap.setMapType(AMap.MAP_TYPE_SATELLITE);
-        amap.showMapText(false);
+        amap.showMapText(false);//设置是否显示底图文字标注，默认显示。
         mStartButton= (Button) findViewById(R.id.move_start_button);
         mStartButton.setOnClickListener(this);
     }
@@ -92,6 +92,7 @@ public class MovingPointMainActivity extends Activity implements AMap.OnMapLoade
         for(int i = 0; i <mOriginList.size(); i++){
             if (mPointIndex.contains(i)){
                 Marker marker = amap.addMarker(new MarkerOptions().position(mOriginList.get(i)));
+                //设置Marker覆盖物的附加信息对象。
                 marker.setObject(i);
             }
         }
