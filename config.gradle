@@ -19,7 +19,7 @@ ext {
     isDriveRouteApplication = false
 
     isCustomZoomApplication = false
-    isDriveRoutePlanApplication = true
+    isDriveRoutePlanApplication = false
     isAppbarApplication = false
 
     android = [

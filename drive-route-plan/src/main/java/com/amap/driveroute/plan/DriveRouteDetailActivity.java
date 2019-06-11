@@ -1,4 +1,4 @@
-package com.amap.driveroute;
+package com.amap.driveroute.plan;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveRouteResult;
 import com.amap.api.services.route.DriveStep;
 import com.amap.api.services.route.TMC;
-import com.amap.driveroute.util.AMapUtil;
+import com.amap.driveroute.plan.util.AMapUtil;
 import java.util.List;
 
 

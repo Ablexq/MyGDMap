@@ -1,4 +1,4 @@
-package com.amap.driveroute.util;
+package com.amap.driveroute.plan.util;
 
 public class ChString {
 	public static final String Kilometer = "\u516c\u91cc";// "公里";

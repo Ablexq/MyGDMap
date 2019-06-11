@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.amap.driveroute.util;
+package com.amap.driveroute.plan.util;
 
 import android.content.Context;
 import android.widget.Toast;

@@ -1,4 +1,4 @@
-package com.amap.driveroute;
+package com.amap.driveroute.plan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,15 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.AMap.InfoWindowAdapter;
 import com.amap.api.maps.AMap.OnInfoWindowClickListener;
 import com.amap.api.maps.AMap.OnMapClickListener;
 import com.amap.api.maps.AMap.OnMarkerClickListener;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
-import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.BusRouteResult;
@@ -31,12 +28,12 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.RouteSearch.DriveRouteQuery;
 import com.amap.api.services.route.RouteSearch.OnRouteSearchListener;
 import com.amap.api.services.route.WalkRouteResult;
-import com.amap.driveroute.util.AMapUtil;
-import com.amap.driveroute.util.ToastUtil;
-import com.amap.driveroute.overlay.DrivingRouteOverlay;
+import com.amap.driveroute.plan.util.AMapUtil;
+import com.amap.driveroute.plan.util.ToastUtil;
+import com.amap.driveroute.plan.overlay.DrivingRouteOverlay;
 
 
-public class DriveRouteActivity extends Activity implements OnMapClickListener,
+public class DriveRoutePlanActivity extends Activity implements OnMapClickListener,
         OnMarkerClickListener, OnInfoWindowClickListener, OnRouteSearchListener, OnClickListener, AMap.OnMapLoadedListener {
     private AMap aMap;
     private MapView mapView;
@@ -87,10 +84,10 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
      * 注册监听
      */
     private void registerListener() {
-        aMap.setOnMapLoadedListener(DriveRouteActivity.this);
-        aMap.setOnMapClickListener(DriveRouteActivity.this);
-        aMap.setOnMarkerClickListener(DriveRouteActivity.this);
-        aMap.setOnInfoWindowClickListener(DriveRouteActivity.this);
+        aMap.setOnMapLoadedListener(DriveRoutePlanActivity.this);
+        aMap.setOnMapClickListener(DriveRoutePlanActivity.this);
+        aMap.setOnMarkerClickListener(DriveRoutePlanActivity.this);
+        aMap.setOnInfoWindowClickListener(DriveRoutePlanActivity.this);
 
     }
 

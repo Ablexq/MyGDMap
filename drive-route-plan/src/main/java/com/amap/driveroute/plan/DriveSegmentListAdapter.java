@@ -1,4 +1,4 @@
-package com.amap.driveroute;
+package com.amap.driveroute.plan;
 
 import android.content.Context;
 import android.view.View;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.services.route.DriveStep;
-import com.amap.driveroute.util.AMapUtil;
+import com.amap.driveroute.plan.util.AMapUtil;
 
 import java.util.ArrayList;
 import java.util.List;

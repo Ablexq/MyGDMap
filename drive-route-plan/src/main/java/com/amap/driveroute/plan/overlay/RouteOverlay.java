@@ -1,4 +1,4 @@
-package com.amap.driveroute.overlay;
+package com.amap.driveroute.plan.overlay;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.Polyline;
 import com.amap.api.maps.model.PolylineOptions;
-import com.amap.driveroute.R;
+import com.amap.driveroute.plan.R;
 
 import java.util.ArrayList;
 import java.util.List;

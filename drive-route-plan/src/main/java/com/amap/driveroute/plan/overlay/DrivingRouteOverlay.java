@@ -1,4 +1,4 @@
-package com.amap.driveroute.overlay;
+package com.amap.driveroute.plan.overlay;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -15,8 +15,8 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveStep;
 import com.amap.api.services.route.TMC;
-import com.amap.driveroute.R;
-import com.amap.driveroute.util.AMapUtil;
+import com.amap.driveroute.plan.R;
+import com.amap.driveroute.plan.util.AMapUtil;
 import java.util.ArrayList;
 import java.util.List;
 

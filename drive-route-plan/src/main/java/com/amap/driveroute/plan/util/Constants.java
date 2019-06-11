@@ -1,4 +1,4 @@
-package com.amap.driveroute.util;
+package com.amap.driveroute.plan.util;
 
 import com.amap.api.maps.model.LatLng;
 

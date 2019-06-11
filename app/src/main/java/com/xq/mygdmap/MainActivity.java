@@ -9,8 +9,8 @@ import com.amap.android_location_markermove.MakerMoveMainActivity;
 import com.amap.android_map_customzoom.CustomZoomMainActivity;
 import com.amap.android_path_smooth.PathSmoothMainActivity;
 import com.amap.androidobackgroundlocation.BgLocationActivity;
-//import com.amap.driveroute.DriveRouteActivity;
 import com.amap.driveroute.DriveRouteMainActivity;
+import com.amap.driveroute.plan.DriveRoutePlanActivity;
 import com.amap.hightlocation.LocationHighActivity;
 import com.amap.location.rotation.RotationMainActivity;
 import com.amap.locationservicedemo.LocationServiceActivity;
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, CustomZoomMainActivity.class);
                 break;  //
             case R.id.btn17:
-//                intent = new Intent(MainActivity.this, DriveRouteActivity.class);
+                intent = new Intent(MainActivity.this, DriveRoutePlanActivity.class);
                 break;
         }
         startActivity(intent);
