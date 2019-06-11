@@ -11,14 +11,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
 
-        <activity android:name=".AppbarActivity">
-
+        <activity android:name=".AppbarMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".AppbarMapActivity"/>
+        <activity android:name=".AppbarIvActivity"/>
     </application>
 
 </manifest>

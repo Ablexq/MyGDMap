@@ -88,6 +88,9 @@ dependencies {
     if (!rootProject.ext.isCustomZoomApplication) {
         implementation project(':customzoom')
     }
+    if (!rootProject.ext.isDriveRoutePlanApplication) {
+        implementation project(':drive-route-plan')
+    }
     if (!rootProject.ext.isAppbarApplication) {
         implementation project(':appbarlayout')
     }

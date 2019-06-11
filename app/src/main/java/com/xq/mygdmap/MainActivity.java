@@ -9,6 +9,7 @@ import com.amap.android_location_markermove.MakerMoveMainActivity;
 import com.amap.android_map_customzoom.CustomZoomMainActivity;
 import com.amap.android_path_smooth.PathSmoothMainActivity;
 import com.amap.androidobackgroundlocation.BgLocationActivity;
+//import com.amap.driveroute.DriveRouteActivity;
 import com.amap.driveroute.DriveRouteMainActivity;
 import com.amap.hightlocation.LocationHighActivity;
 import com.amap.location.rotation.RotationMainActivity;
@@ -17,7 +18,7 @@ import com.amap.navi.demo.NaviMasterActivity;
 import com.amap.navifragement.NaviFragActivity;
 import com.amap.naviquickstart.NaviQuickActivity;
 import com.amap.requestpermissions.MapPermissionActivity;
-import com.example.appbarlayout.AppbarActivity;
+import com.example.appbarlayout.AppbarMainActivity;
 
 import amap.android_multiple_infowindows.InfoWindowMainActivity;
 import amap.com.android_moving_point.MovingPointMainActivity;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.btn0:
-                intent = new Intent(MainActivity.this, AppbarActivity.class);
+                intent = new Intent(MainActivity.this, AppbarMainActivity.class);
                 break;
 
             case R.id.btn1:
@@ -93,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
             //
             case R.id.btn16:
                 intent = new Intent(MainActivity.this, CustomZoomMainActivity.class);
+                break;  //
+            case R.id.btn17:
+//                intent = new Intent(MainActivity.this, DriveRouteActivity.class);
                 break;
         }
         startActivity(intent);

@@ -9,12 +9,12 @@ import android.support.v7.app.AppCompatActivity;
  *
  * @author xq
  */
-public class AppbarActivity extends AppCompatActivity {
+public class AppbarIvActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_appbar);
+        setContentView(R.layout.layout_appbar_iv);
 
     }
 }
