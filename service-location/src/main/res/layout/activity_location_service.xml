@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/startLocation"
             android:clickable="true"
+            android:textColor="@color/colorAccent"
             android:onClick="startService"/>
 
         <TextView
