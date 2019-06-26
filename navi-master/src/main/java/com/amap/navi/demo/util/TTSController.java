@@ -1,9 +1,11 @@
 package com.amap.navi.demo.util;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.amap.api.navi.AMapNaviListener;
@@ -38,6 +40,8 @@ import java.util.LinkedList;
  */
 public class TTSController implements AMapNaviListener {
 
+    private static final String TAG = TTSController.class.getSimpleName();
+
     /**
      * 请替换您自己申请的ID。
      */
@@ -50,6 +54,7 @@ public class TTSController implements AMapNaviListener {
     private LinkedList<String> wordList = new LinkedList();
     private final int TTS_PLAY = 1;
     private final int CHECK_TTS_PLAY = 2;
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -180,24 +185,34 @@ public class TTSController implements AMapNaviListener {
 
     @Override
     public void onArriveDestination() {
+        Log.e(TAG, "onArriveDestination==================" );
     }
 
     @Override
     public void onArrivedWayPoint(int arg0) {
+        Log.e(TAG, "onArrivedWayPoint===================" + arg0);
+
     }
 
     @Override
     public void onCalculateRouteFailure(int arg0) {
+        Log.e(TAG, "onCalculateRouteFailure=====================" + arg0);
+
         if (wordList != null)
             wordList.addLast("路线规划失败");
     }
 
     @Override
     public void onEndEmulatorNavi() {
+        Log.e(TAG, "onEndEmulatorNavi==========================");
+
     }
 
     @Override
     public void onGetNavigationText(int arg0, String arg1) {
+        Log.e(TAG, "onGetNavigationText===============" + arg0);
+        Log.e(TAG, "onGetNavigationText===============" + arg1);
+
         if (wordList != null)
             wordList.addLast(arg1);
         handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
@@ -205,48 +220,66 @@ public class TTSController implements AMapNaviListener {
 
     @Override
     public void onGetNavigationText(String s) {
+        Log.e(TAG, "onGetNavigationText===============" + s);
 
     }
 
 
     @Override
     public void onInitNaviFailure() {
+        Log.e(TAG, "onInitNaviFailure===================");
+
     }
 
     @Override
     public void onInitNaviSuccess() {
+        Log.e(TAG, "onInitNaviSuccess=====================");
+
     }
 
     @Override
     public void onLocationChange(AMapNaviLocation arg0) {
+        Log.e(TAG, "onLocationChange====================" + arg0.toString());
+
     }
 
     @Override
     public void onReCalculateRouteForTrafficJam() {
+        Log.e(TAG, "onReCalculateRouteForTrafficJam====================");
+
         if (wordList != null)
             wordList.addLast("前方路线拥堵，路线重新规划");
     }
 
     @Override
     public void onReCalculateRouteForYaw() {
+        Log.e(TAG, "onReCalculateRouteForYaw==========================");
+
         if (wordList != null)
             wordList.addLast("路线重新规划");
     }
 
     @Override
     public void onStartNavi(int arg0) {
+        Log.e(TAG, "onStartNavi================" + arg0);
+
     }
 
     @Override
     public void onTrafficStatusUpdate() {
+        Log.e(TAG, "onTrafficStatusUpdate==========================");
+
     }
 
     @Override
     public void onGpsOpenStatus(boolean enabled) {
+        Log.e(TAG, "onGpsOpenStatus====================" + enabled);
+
     }
 
     @Override
     public void onNaviInfoUpdate(NaviInfo naviinfo) {
+        Log.e(TAG, "onNaviInfoUpdate===================" + naviinfo.toString());
 
     }
 
