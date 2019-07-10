@@ -53,6 +53,9 @@ public class LocationHighActivity extends CheckPermissionsActivity
             mMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
             // 设置定位的类型为定位模式 ，可以由定位、跟随或地图根据面向方向旋转几种
             mMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+
+            MapStyleUtil.setMapCustomStyle2File(this);
+            MapStyleUtil.setMapCustomStyle(this, mMap);
         }
     }
 
