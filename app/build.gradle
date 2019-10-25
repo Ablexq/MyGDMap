@@ -1,6 +1,26 @@
 apply plugin: 'com.android.application'
 
+//获取properties
+def keystorePropertiesFile = rootProject.file("sign.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+        debug {
+            keyAlias keystoreProperties['keyAlias_debug']
+            keyPassword keystoreProperties['keyPassword_debug']
+            storeFile file(keystoreProperties['storeFile_debug'])
+            storePassword keystoreProperties['storePassword_debug']
+        }
+    }
+
     def android = rootProject.ext.android
     compileSdkVersion android["compileSdkVersion"]
     buildToolsVersion android.buildToolsVersion
@@ -16,6 +36,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //修改
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //修改
+            signingConfig signingConfigs.debug
         }
     }
 
