@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.AMapNaviViewOptions;
 
 /**
  * 自定义Fragment 操作AMapNaviView
@@ -32,6 +33,15 @@ public class NaviFragment extends Fragment implements AMapNaviViewListener {
         mAMapNaviView = (AMapNaviView) view.findViewById(R.id.navi_view_frag);
         mAMapNaviView.onCreate(savedInstanceState);
         mAMapNaviView.setAMapNaviViewListener(this);
+
+        //走过的路线变灰色
+        AMapNaviViewOptions options = mAMapNaviView.getViewOptions();
+        options.setAfterRouteAutoGray(true);
+//        //关闭自动绘制路线（如果你想自行绘制路线的话，必须关闭！！！）
+//        options.setAutoDrawRoute(false);
+        mAMapNaviView.setViewOptions(options);
+
+
         return view;
     }
 
