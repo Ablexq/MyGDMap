@@ -30,7 +30,9 @@ import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
 import com.autonavi.tbt.TrafficFacilityInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class NaviFragActivity extends AppCompatActivity implements AMapNaviListener, View.OnClickListener, AMap.OnMapLoadedListener {
@@ -52,9 +54,9 @@ public class NaviFragActivity extends AppCompatActivity implements AMapNaviListe
      */
     private List<NaviLatLng> endList = new ArrayList<NaviLatLng>();
     /*
-        * strategyFlag转换出来的值都对应PathPlanningStrategy常量，用户也可以直接传入PathPlanningStrategy常量进行算路。
-        * 如:mAMapNavi.calculateDriveRoute(mStartList, mEndList, mWayPointList,PathPlanningStrategy.DRIVING_DEFAULT);
-        */
+     * strategyFlag转换出来的值都对应PathPlanningStrategy常量，用户也可以直接传入PathPlanningStrategy常量进行算路。
+     * 如:mAMapNavi.calculateDriveRoute(mStartList, mEndList, mWayPointList,PathPlanningStrategy.DRIVING_DEFAULT);
+     */
     int strategyFlag = 0;
     private Button mStartNaviButton;
 
@@ -129,11 +131,12 @@ public class NaviFragActivity extends AppCompatActivity implements AMapNaviListe
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.calculate_route_start_navi){
+        if (view.getId() == R.id.calculate_route_start_navi) {
             startNavi();
         }
 
     }
+
     /**
      * 开始导航
      */
@@ -163,8 +166,33 @@ public class NaviFragActivity extends AppCompatActivity implements AMapNaviListe
 
     }
 
+    String lastUploadTime = "";
+
     @Override
     public void onLocationChange(AMapNaviLocation aMapNaviLocation) {
+//        System.out.println("Latitude:" + aMapNaviLocation.getCoord().getLatitude() +
+//                " ======================================" +
+//                " Longitude:" + aMapNaviLocation.getCoord().getLongitude());
+//
+        SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd hh:mm:ss.sss");
+        String currentChangeTime = format.format(aMapNaviLocation.getTime());
+//        System.out.println("time=================" + currentChangeTime);
+        System.out.println("Accuracy=================" + aMapNaviLocation.getAccuracy());
+        System.out.println("==========================================================");
+
+        Calendar calendar = Calendar.getInstance();
+        int i = calendar.get(Calendar.SECOND);
+        System.out.println("lastUpdateTime1=================" + lastUploadTime);
+        System.out.println("currentChangeTime1===================" + currentChangeTime);
+        if (i % 10 == 0) {//每逢十秒
+            if (currentChangeTime.equals(lastUploadTime)) {
+                return;
+            }
+            //上传
+            lastUploadTime = currentChangeTime;
+            System.out.println("lastUpdateTime2=================" + lastUploadTime);
+            System.out.println("currentChangeTime2===================" + currentChangeTime);
+        }
 
     }
 
