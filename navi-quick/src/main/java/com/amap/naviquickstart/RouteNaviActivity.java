@@ -10,6 +10,7 @@ import com.amap.api.navi.AMapNavi;
 import com.amap.api.navi.AMapNaviListener;
 import com.amap.api.navi.AMapNaviView;
 import com.amap.api.navi.AMapNaviViewListener;
+import com.amap.api.navi.AMapNaviViewOptions;
 import com.amap.api.navi.model.AMapCalcRouteResult;
 import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapModelCross;
@@ -49,6 +50,13 @@ public class RouteNaviActivity extends Activity implements AMapNaviListener, AMa
         mAMapNaviView = (AMapNaviView) findViewById(R.id.navi_view);
         mAMapNaviView.onCreate(savedInstanceState);
         mAMapNaviView.setAMapNaviViewListener(this);
+
+        //走过的路线变灰色
+        AMapNaviViewOptions options = mAMapNaviView.getViewOptions();
+        options.setAfterRouteAutoGray(true);
+//        //关闭自动绘制路线（如果你想自行绘制路线的话，必须关闭！！！）
+//        options.setAutoDrawRoute(false);
+        mAMapNaviView.setViewOptions(options);
 
         mAMapNavi = AMapNavi.getInstance(getApplicationContext());
         mAMapNavi.addAMapNaviListener(this);
